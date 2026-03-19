@@ -3,6 +3,8 @@
 ## Project Overview
 BlogVerse is a full-stack blogging platform where users can register, log in, create blog posts, and add comments. This project demonstrates the containerization and orchestration of the application using Docker and Kubernetes, fulfilling the requirements for Assignment 2.
 
+BlogVerse Repo : https://github.com/meerabawais/BlogVerse
+
 ## Tools and Technologies Used
 * **Frontend:** React.js, JavaScript, CSS
 * **Backend:** Node.js, Express.js
