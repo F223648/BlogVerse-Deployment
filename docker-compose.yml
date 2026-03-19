@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  database:
+    image: mongo:latest
+    container_name: blogverse-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build: ./backend
+    container_name: blogverse-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://database:27017/blogverse
+    depends_on:
+      - database
+
+  frontend:
+    build: ./blogverse
+    container_name: blogverse-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      # This assumes your React app uses this env variable for API calls
+      - REACT_APP_API_URL=http://localhost:5000 
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:
